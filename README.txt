@@ -12,3 +12,8 @@ Usage
 => #<Multibyte::Chars:0x127e3d0 @string="新通">
 >> "新通訊錄".chars[0..1].to_s
 => "新通"
+
+Installation:
+=============
+
+$ sudo gem install matta-multibyte --source=http://gems.github.com
