@@ -9,3 +9,7 @@ end
 
 require 'multibyte/chars'
 require 'unicode'
+
+class String #:nodoc:
+  include CoreExtensions::String::Unicode
+end
