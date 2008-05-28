@@ -1,4 +1,5 @@
 $:.unshift File.dirname(__FILE__)
+$KCODE = 'u'
 
 module Multibyte #:nodoc:
   DEFAULT_NORMALIZATION_FORM = :kc
@@ -7,3 +8,4 @@ module Multibyte #:nodoc:
 end
 
 require 'multibyte/chars'
+require 'unicode'
