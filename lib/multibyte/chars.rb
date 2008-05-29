@@ -23,7 +23,7 @@ module Multibyte #:nodoc:
   # implement your own handler. If you your own handler to work on anything but UTF-8 you probably also
   # want to override Chars#handler.
   #
-  #   ActiveSupport::Multibyte::Chars.handler = MyHandler
+  #   Multibyte::Chars.handler = MyHandler
   #
   # Note that a few methods are defined on Chars instead of the handler because they are defined on Object or Kernel
   # and method_missing can't catch them.
