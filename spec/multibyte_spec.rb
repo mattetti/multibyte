@@ -77,5 +77,37 @@ describe "Chars" do
     
   end
   
+  describe 'gsub' do
+    
+    it "should be able to gsub" do
+      'café'.chars.gsub(/f/, 't').should == 'caté'
+      "我的影片".chars.gsub(/片/, 'X').should == "我的影X"
+    end
+    
+    it "should be to gsub even without the kcode setup" do
+      with_kcode('none') do
+        'éda'.chars.gsub(/d/, 'x').should == 'éxa'
+      end
+    end
+    
+  end
+  
+  describe 'split' do
+    
+    before(:each) do
+      @word = "eﬃcient"
+      @chars = ["e", "ﬃ", "c", "i", "e", "n", "t"]
+    end
+
+    it "should split by chars" do
+      @word.split(//).should == @chars
+      @chars.should == @word.chars.split(//)
+    end
+    
+    it "should return Chars instances" do
+      @word.chars.split(//).first.should be_an_instance_of(Multibyte::Chars)
+    end
+    
+  end
   
 end
