@@ -110,4 +110,99 @@ describe "Chars" do
     
   end
   
+  describe 'regexp matching' do
+    
+    it "should should use String when kcode not set" do
+      with_kcode('none') do
+        (string_format_examples[:utf8].chars =~ /ﬃ/).should == 12
+      end
+    end
+    
+    it "should be unicode aware" do
+      with_kcode('UTF8') do
+        (string_format_examples[:utf8].chars =~ /ﬃ/).should == 9
+      end
+    end
+    
+    it "should return nil if no matches were found" do
+      with_kcode('UTF8') do
+        (''.chars =~ /\d+/).should be_nil
+      end
+    end
+    
+  end
+  
+  describe 'UTF8 pragma' do
+    
+    it "should be on because KCODE is UTF8" do
+      if RUBY_VERSION < '1.9'
+        with_kcode('UTF8') do
+          " ".chars.send(:utf8_pragma?).should be_true
+        end
+      end
+    end
+    
+    it "should be off because KCODE is UTF8" do
+      if RUBY_VERSION < '1.9'
+        with_kcode('none') do
+          " ".chars.send(:utf8_pragma?).should be_false
+        end
+      end
+    end
+    
+    it "should be OFF on Ruby 1.9" do
+      if RUBY_VERSION > '1.9'
+        " ".chars.send(:utf8_pragma?).shoud be_false
+      end
+    end
+    
+  end
+  
+  describe 'handler settings' do
+    
+    before(:each) do
+      @handler = ''.chars.handler
+    end
+    
+    after(:all) do
+      Multibyte::Chars.handler = Multibyte::Handlers::UTF8Handler
+    end
+    
+    it "should process use and set handlers in the proper order" do
+      Multibyte::Chars.handler = :first
+      ''.chars.handler.should == :first
+      
+      Multibyte::Chars.handler = :second
+      ''.chars.handler.should == :second
+      
+      Multibyte::Chars.handler = @handler
+    end
+    
+    it "should raise an error" do
+      lambda{''.chars.handler.split}.should raise_error
+    end
+
+  end
+  
+  describe 'method chaining' do
+    
+    it "should return a chars instance when using downcase" do
+      ''.chars.downcase.should be_an_instance_of(Multibyte::Chars)
+    end
+    
+    it "should return a chars instance when using downcase" do
+      ''.chars.strip.should be_an_instance_of(Multibyte::Chars)
+    end
+    
+    it "should forward the chars instance down the down call path of chaining" do
+      stripped = ''.chars.downcase.strip
+      stripped.should be_an_instance_of(Multibyte::Chars)
+    end
+    
+    it "should output a comparable result than a string result" do
+      "  FOO   ".chars.normalize.downcase.strip.should == 'foo'
+    end
+    
+  end
+  
 end
