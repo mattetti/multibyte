@@ -205,4 +205,58 @@ describe "Chars" do
     
   end
   
+  describe 'passthrough_on_kcode' do
+    # The easiest way to check if the passthrough is in place is through #size
+    with_kcode('none') do
+      string_format_examples[:utf8].chars.size.should == 26
+    end
+    
+    with_kcode('UTF8') do
+      string_format_examples[:utf8].chars.size.should == 17
+    end
+  end
+  
+  describe 'desctructiveness' do
+    # Note that we're testing the destructiveness here and not the correct behaviour of the methods
+    
+    before(:each) do
+      @str = 'ac'
+    end
+    
+    it "should be destructive when using Insert on a string" do
+      @str.chars.insert(1, 'b')
+      @str.should == 'abc'
+    end
+    
+    it "should be destructive when using reverse! on a string" do
+      @str.chars.reverse!
+      @str.should == 'ca'
+    end
+    
+  end
+  
+  describe 'resilience' do
+    
+    it "should contain interpretable bytes" do
+      string_format_examples[:bytes].chars.size.should == 5
+    end
+    
+    it "should only yield interpretable bytes when a string is reversed" do
+      reversed = [0xb8, 0x17e, 0x8, 0x2c6, 0xa5].reverse.pack('U*')
+      string_format_examples[:bytes].chars.reverse.to_s.should == reversed
+      string_format_examples[:bytes].chars.reverse!.to_s.should == reversed
+    end
+  end
+  
+  describe 'duck typing' do
+    
+    it "should respond normally to String methods" do
+      'test'.chars.respond_to?(:strip).should be_true
+      'test'.chars.respond_to?(:normalize).should be_true
+      'test'.chars.respond_to?(:normalize!).should be_true
+      'test'.chars.respond_to?(:a_method_that_doesnt_exist).should be_false
+    end
+    
+  end 
+  
 end
