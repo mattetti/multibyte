@@ -9,6 +9,7 @@ lib/multibyte.rb
 lib/multibyte/chars.rb
 lib/multibyte/generators/generate_tables.rb
 lib/multibyte/handlers/passthru_handler.rb
+lib/multibyte/handlers/unicode_tables.dat
 lib/multibyte/handlers/utf8_handler.rb
 lib/multibyte/handlers/utf8_handler_proc.rb
 lib/multibyte/version.rb
