@@ -16,4 +16,4 @@ Usage
 Installation:
 =============
 
-$ sudo gem install matta-multibyte --source=http://gems.github.com
+$ sudo gem install mattetti-multibyte --source=http://gems.github.com

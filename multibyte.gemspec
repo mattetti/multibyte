@@ -6,7 +6,6 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matt Aimonetti"]
-  s.cert_chain = ["/Users/matta/.gem/gem-public_cert.pem"]
   s.date = %q{2008-05-28}
   s.description = %q{Multibyte support for Ruby}
   s.email = ["mattaimonetti@gmail.com"]
@@ -17,7 +16,6 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--main", "README.txt"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{multibyte}
-  s.rubygems_version = %q{1.1.1}
-  s.signing_key = %q{/Users/matta/.gem/gem-private_key.pem}
+  s.rubygems_version = %q{1.3.0}
   s.summary = %q{Multibyte support for Ruby}
 end
