@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{Multibyte support for Ruby}
   s.email = ["mattaimonetti@gmail.com"]
   s.extra_rdoc_files = ["History.txt", "License.txt", "Manifest.txt", "README.txt", "website/index.txt"]
-  s.files = ["History.txt", "License.txt", "Manifest.txt", "README.txt", "Rakefile", "config/hoe.rb", "config/requirements.rb", "lib/multibyte.rb", "lib/multibyte/chars.rb", "lib/multibyte/generators/generate_tables.rb", "lib/multibyte/handlers/passthru_handler.rb", "lib/multibyte/handlers/utf8_handler.rb", "lib/multibyte/handlers/utf8_handler_proc.rb", "lib/multibyte/version.rb", "lib/unicode.rb", "log/debug.log", "script/destroy", "script/generate", "script/txt2html", "setup.rb", "spec/multibyte_spec.rb", "spec/spec.opts", "spec/spec_helper.rb", "tasks/deployment.rake", "tasks/environment.rake", "tasks/rspec.rake", "tasks/website.rake"]
+  s.files = ["History.txt", "License.txt", "Manifest.txt", "README.txt", "Rakefile", "config/hoe.rb", "config/requirements.rb", "lib/multibyte.rb", "lib/multibyte/chars.rb", "lib/multibyte/generators/generate_tables.rb", "lib/multibyte/handlers/passthru_handler.rb", "lib/multibyte/handlers/utf8_handler.rb", "lib/multibyte/handlers/utf8_handler_proc.rb", "lib/multibyte/handlers/unicode_tables.dat", "lib/multibyte/version.rb", "lib/unicode.rb", "log/debug.log", "script/destroy", "script/generate", "script/txt2html", "setup.rb", "spec/multibyte_spec.rb", "spec/spec.opts", "spec/spec_helper.rb", "tasks/deployment.rake", "tasks/environment.rake", "tasks/rspec.rake", "tasks/website.rake"]
   s.has_rdoc = true
   s.homepage = %q{http://multibyte.rubyforge.org}
   s.rdoc_options = ["--main", "README.txt"]
